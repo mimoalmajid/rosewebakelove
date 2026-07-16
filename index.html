@@ -1,0 +1,1481 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rose - We Bake Love | Custom Cakes & Arabic Sweets | Leeds</title>
+    <meta name="description" content="Rose - We Bake Love. Custom celebration cakes, birthday cakes, traditional Iraqi & Arabic sweets. Fresh daily baking in Leeds LS16. Order now!">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600&family=Great+Vibes&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --purple: #8B5E83;
+            --purple-dark: #6B4C66;
+            --purple-light: #A67FA0;
+            --purple-deep: #3D2B4F;
+            --cream: #FAF6F0;
+            --cream-dark: #F0E8D8;
+            --gold: #C9A84C;
+            --gold-light: #D4B76A;
+            --white: #FFFFFF;
+            --text: #3D2B4F;
+            --text-light: #6B5B7A;
+            --text-muted: #9B8BA5;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--cream);
+            color: var(--text);
+            overflow-x: hidden;
+            line-height: 1.7;
+        }
+
+        ::selection { background: var(--purple); color: var(--white); }
+
+        /* ===== SCROLLBAR ===== */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: var(--cream); }
+        ::-webkit-scrollbar-thumb { background: var(--purple); border-radius: 4px; }
+
+        /* ===== ANIMATIONS ===== */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        @keyframes pulse-glow {
+            0%, 100% { box-shadow: 0 0 20px rgba(139,94,131,0.2); }
+            50% { box-shadow: 0 0 40px rgba(139,94,131,0.4); }
+        }
+        @keyframes sparkle {
+            0%, 100% { opacity: 0; transform: scale(0); }
+            50% { opacity: 1; transform: scale(1); }
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .fade-in-delay-1 { transition-delay: 0.15s; }
+        .fade-in-delay-2 { transition-delay: 0.3s; }
+        .fade-in-delay-3 { transition-delay: 0.45s; }
+        .fade-in-delay-4 { transition-delay: 0.6s; }
+
+        /* ===== NAVIGATION ===== */
+        nav {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 18px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.4s ease;
+        }
+        nav.scrolled {
+            background: rgba(61, 43, 79, 0.95);
+            backdrop-filter: blur(20px);
+            padding: 12px 50px;
+            box-shadow: 0 2px 30px rgba(0,0,0,0.1);
+        }
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+        .nav-logo img {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--gold);
+        }
+        .nav-logo-text {
+            font-family: 'Great Vibes', cursive;
+            font-size: 1.8rem;
+            color: var(--white);
+            letter-spacing: 1px;
+        }
+        .nav-logo-text span {
+            display: block;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.6rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-top: -5px;
+        }
+        .nav-links {
+            display: none;
+            gap: 35px;
+            list-style: none;
+        }
+        .nav-links a {
+            color: rgba(255,255,255,0.85);
+            text-decoration: none;
+            font-size: 0.82rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-weight: 400;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 50%;
+            width: 0;
+            height: 1px;
+            background: var(--gold);
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+        .nav-links a:hover { color: var(--gold); }
+        .nav-links a:hover::after { width: 100%; }
+
+        /* ===== HAMBURGER ===== */
+        .hamburger {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            padding: 8px;
+            z-index: 2001;
+        }
+        .hamburger span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: var(--white);
+            border-radius: 1px;
+            transition: all 0.3s;
+        }
+        .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+        .hamburger.active span:nth-child(2) { opacity: 0; }
+        .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+        /* ===== SIDE MENU ===== */
+        .side-menu {
+            position: fixed;
+            top: 0;
+            right: -320px;
+            width: 320px;
+            height: 100vh;
+            background: linear-gradient(180deg, var(--purple-deep) 0%, var(--purple-dark) 100%);
+            z-index: 2000;
+            display: flex;
+            flex-direction: column;
+            padding: 100px 40px 40px;
+            transition: right 0.4s ease;
+            gap: 5px;
+        }
+        .side-menu.open { right: 0; }
+        .side-menu a {
+            color: rgba(255,255,255,0.85);
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 400;
+            letter-spacing: 1px;
+            transition: color 0.3s;
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        .side-menu a:hover { color: var(--gold); padding-left: 10px; }
+        .side-menu .menu-cta {
+            margin-top: 20px;
+            padding: 14px 24px;
+            background: var(--gold);
+            color: var(--purple-deep);
+            text-align: center;
+            border-radius: 8px;
+            font-weight: 600;
+            border: none;
+            letter-spacing: 1px;
+        }
+        .side-menu .menu-cta:hover {
+            background: var(--gold-light);
+            padding-left: 0;
+        }
+
+        /* ===== HERO ===== */
+        .hero {
+            min-height: 85vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            background: linear-gradient(135deg, #2D1F3D 0%, #3D2B4F 30%, #5A3D5C 60%, #3D2B4F 100%);
+            overflow: hidden;
+            padding: 80px 0 60px;
+        }
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            animation: fadeInUp 1.2s ease-out;
+            max-width: 800px;
+            padding: 0 30px;
+        }
+        .hero-logo {
+            width: 260px;
+            height: 260px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--gold);
+            margin-bottom: 25px;
+            box-shadow: 0 10px 50px rgba(0,0,0,0.3);
+            position: relative;
+            z-index: 10;
+        }
+        .hero-title {
+            font-family: 'Great Vibes', cursive;
+            font-size: clamp(3.5rem, 10vw, 7rem);
+            color: var(--white);
+            line-height: 1;
+            margin-bottom: 10px;
+            text-shadow: 0 4px 30px rgba(0,0,0,0.4);
+        }
+        .hero-tagline {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1.2rem, 3vw, 1.8rem);
+            color: var(--gold);
+            font-style: italic;
+            margin-bottom: 25px;
+            letter-spacing: 2px;
+        }
+        .hero-divider {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+        .hero-divider .line {
+            width: 60px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
+        }
+        .hero-divider svg {
+            fill: var(--gold);
+            width: 16px;
+            height: 16px;
+        }
+        .hero-desc {
+            color: rgba(255,255,255,0.8);
+            font-size: 1.05rem;
+            max-width: 550px;
+            margin: 0 auto 35px;
+            font-weight: 300;
+            line-height: 1.8;
+        }
+        .hero-badges {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 35px;
+        }
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            border: 1px solid rgba(201,168,76,0.5);
+            padding: 10px 22px;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--cream);
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+        }
+        .hero-badge svg {
+            fill: var(--gold);
+            width: 14px;
+            height: 14px;
+        }
+        .hero-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%);
+            color: var(--purple-deep);
+            padding: 16px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            transition: all 0.4s ease;
+            box-shadow: 0 8px 30px rgba(201,168,76,0.3);
+        }
+        .hero-cta:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 40px rgba(201,168,76,0.4);
+        }
+        .hero-carousel-strip {
+            width: 100vw;
+            margin-left: calc(-50vw + 50%);
+            height: 200px;
+            overflow: hidden;
+            margin-top: 0;
+            margin-bottom: 50px;
+        }
+        .hero-carousel-strip .hero-carousel-track {
+            display: flex;
+            animation: marquee 46s linear infinite;
+            width: max-content;
+            height: 100%;
+        }
+        .hero-carousel-strip .hero-carousel-track img {
+            width: 230px;
+            height: 200px;
+            object-fit: cover;
+            filter: brightness(0.6) saturate(0.7);
+            display: block;
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 25px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            color: var(--gold);
+            font-size: 0.7rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            opacity: 0.6;
+            animation: fadeIn 2s ease-out 1s both;
+        }
+
+        /* ===== SECTIONS ===== */
+        section { padding: 100px 50px; }
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        .section-label {
+            font-size: 0.8rem;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--purple);
+            font-weight: 500;
+            margin-bottom: 15px;
+        }
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2rem, 5vw, 3rem);
+            color: var(--text);
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+        .section-divider {
+            width: 60px;
+            height: 2px;
+            background: linear-gradient(90deg, var(--purple), var(--gold));
+            margin: 0 auto 20px;
+            border-radius: 1px;
+        }
+        .section-subtitle {
+            color: var(--text-light);
+            font-size: 1.05rem;
+            max-width: 600px;
+            margin: 0 auto;
+            font-weight: 300;
+        }
+
+        /* ===== ABOUT ===== */
+        .about {
+            background: var(--white);
+        }
+        .about-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+        .about-image {
+            position: relative;
+        }
+        .about-image img {
+            width: 100%;
+            border-radius: 16px;
+            box-shadow: 0 20px 60px rgba(61,43,79,0.15);
+        }
+        .about-image::before {
+            content: '';
+            position: absolute;
+            top: 20px; left: 20px;
+            width: 100%; height: 100%;
+            border: 2px solid var(--gold);
+            border-radius: 16px;
+            z-index: -1;
+        }
+        .about-text h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            color: var(--text);
+            margin-bottom: 20px;
+        }
+        .about-text p {
+            color: var(--text-light);
+            margin-bottom: 18px;
+            font-weight: 300;
+        }
+        .about-features {
+            list-style: none;
+            margin-top: 25px;
+        }
+        .about-features li {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 14px;
+            color: var(--text);
+            font-size: 0.95rem;
+        }
+        .about-features svg {
+            fill: var(--purple);
+            width: 18px;
+            height: 18px;
+            flex-shrink: 0;
+        }
+
+        /* ===== SPECIALTIES ===== */
+        .specialties {
+            background: linear-gradient(180deg, var(--cream) 0%, var(--cream-dark) 100%);
+        }
+        .specialties-grid {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+        }
+        .specialty-card {
+            background: var(--white);
+            border-radius: 16px;
+            padding: 40px 25px;
+            text-align: center;
+            transition: all 0.4s ease;
+            border: 1px solid rgba(139,94,131,0.1);
+        }
+        .specialty-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 50px rgba(61,43,79,0.1);
+            border-color: rgba(139,94,131,0.2);
+        }
+        .specialty-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--purple) 0%, var(--purple-light) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+        }
+        .specialty-icon svg {
+            fill: var(--white);
+            width: 28px;
+            height: 28px;
+        }
+        .specialty-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+            color: var(--text);
+            margin-bottom: 10px;
+        }
+        .specialty-card p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            font-weight: 300;
+        }
+
+        /* ===== GALLERY ===== */
+        .gallery {
+            background: var(--white);
+        }
+        .gallery-grid {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+        }
+        .gallery-item {
+            position: relative;
+            border-radius: 10px;
+            overflow: hidden;
+            cursor: pointer;
+            aspect-ratio: 1/1;
+            background: #1a1025;
+        }
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+        .gallery-hero {
+            width: 100%;
+            max-width: 450px;
+            margin: 0 auto 20px;
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+            cursor: pointer;
+            aspect-ratio: 3/4;
+            background: #1a1025;
+        }
+        .gallery-hero img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        .gallery-hero:hover img {
+            transform: scale(1.03);
+        }
+        .gallery-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0; right: 0;
+            padding: 30px 20px 20px;
+            background: linear-gradient(transparent, rgba(61,43,79,0.7));
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+        .gallery-item:hover .gallery-overlay,
+        .gallery-hero:hover .gallery-overlay {
+            opacity: 1;
+        }
+        .gallery-overlay h4 {
+            color: var(--white);
+            font-family: 'Playfair Display', serif;
+            font-size: 1.1rem;
+        }
+        .gallery-overlay p {
+            display: none;
+        }
+
+        /* ===== WHY CHOOSE US ===== */
+        .why {
+            background: linear-gradient(135deg, var(--purple-deep) 0%, var(--purple-dark) 100%);
+            color: var(--white);
+        }
+        .why .section-label { color: var(--gold); }
+        .why .section-title { color: var(--white); }
+        .why .section-subtitle { color: rgba(255,255,255,0.7); }
+        .why-grid {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+        }
+        .why-item {
+            text-align: center;
+            padding: 20px;
+        }
+        .why-icon {
+            width: 70px;
+            height: 70px;
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(201,168,76,0.3);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+        }
+        .why-icon svg {
+            fill: var(--gold);
+            width: 30px;
+            height: 30px;
+        }
+        .why-item h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+        }
+        .why-item p {
+            color: rgba(255,255,255,0.7);
+            font-size: 0.85rem;
+            font-weight: 300;
+        }
+
+        /* ===== ORDER / CONTACT ===== */
+        .contact {
+            background: var(--cream);
+        }
+        .contact-container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: var(--white);
+            border-radius: 20px;
+            overflow: hidden;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            box-shadow: 0 20px 60px rgba(61,43,79,0.1);
+        }
+        .contact-info {
+            padding: 60px 40px;
+            background: linear-gradient(135deg, var(--purple) 0%, var(--purple-dark) 100%);
+            color: var(--white);
+        }
+        .contact-info h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+        }
+        .contact-info .tagline {
+            color: var(--gold);
+            font-style: italic;
+            margin-bottom: 35px;
+            font-size: 0.95rem;
+        }
+        .contact-detail {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+        .contact-detail svg {
+            fill: var(--gold);
+            width: 22px;
+            height: 22px;
+            flex-shrink: 0;
+            margin-top: 3px;
+        }
+        .contact-detail strong {
+            display: block;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 4px;
+            color: var(--gold);
+        }
+        .contact-detail span, .contact-detail a {
+            color: rgba(255,255,255,0.85);
+            font-size: 0.95rem;
+            font-weight: 300;
+            text-decoration: none;
+        }
+        .contact-detail a:hover { color: var(--gold); }
+        .contact-social {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
+        }
+        .contact-social a {
+            width: 44px;
+            height: 44px;
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(201,168,76,0.3);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+        .contact-social a:hover {
+            background: var(--gold);
+            border-color: var(--gold);
+        }
+        .contact-social a:hover svg { fill: var(--purple-deep); }
+        .contact-social svg {
+            fill: var(--white);
+            width: 20px;
+            height: 20px;
+        }
+
+        .contact-cta {
+            padding: 60px 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+        .contact-cta img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--gold);
+            margin-bottom: 25px;
+        }
+        .contact-cta h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.6rem;
+            color: var(--text);
+            margin-bottom: 15px;
+        }
+        .contact-cta p {
+            color: var(--text-light);
+            font-weight: 300;
+            margin-bottom: 30px;
+            font-size: 0.95rem;
+        }
+        .order-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: linear-gradient(135deg, var(--purple) 0%, var(--purple-dark) 100%);
+            color: var(--white);
+            padding: 16px 36px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            transition: all 0.4s ease;
+            box-shadow: 0 8px 25px rgba(139,94,131,0.3);
+        }
+        .order-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(139,94,131,0.4);
+        }
+        .hygiene-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 25px;
+            padding: 10px 20px;
+            background: rgba(139,94,131,0.08);
+            border-radius: 50px;
+            font-size: 0.85rem;
+            color: var(--purple);
+        }
+        .hygiene-badge svg {
+            fill: var(--gold);
+            width: 18px;
+            height: 18px;
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background: var(--purple-deep);
+            padding: 50px 50px 25px;
+            text-align: center;
+        }
+        .footer-logo {
+            font-family: 'Great Vibes', cursive;
+            font-size: 2.2rem;
+            color: var(--cream);
+            margin-bottom: 8px;
+        }
+        .footer-tagline {
+            color: var(--gold);
+            font-size: 0.85rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 25px;
+        }
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 25px;
+            list-style: none;
+            flex-wrap: wrap;
+        }
+        .footer-links a {
+            color: rgba(255,255,255,0.6);
+            text-decoration: none;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+            transition: color 0.3s;
+        }
+        .footer-links a:hover { color: var(--gold); }
+        .footer-divider {
+            width: 40px;
+            height: 1px;
+            background: var(--gold);
+            margin: 0 auto 20px;
+            opacity: 0.5;
+        }
+        .footer-credit {
+            color: rgba(255,255,255,0.35);
+            font-size: 0.75rem;
+            letter-spacing: 1px;
+        }
+        .footer-credit a {
+            color: rgba(201,168,76,0.6);
+            text-decoration: none;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        /* ===== TESTIMONIALS ===== */
+        .testimonials {
+            background: linear-gradient(135deg, var(--purple-deep) 0%, var(--purple-dark) 100%);
+            color: var(--white);
+            padding: 100px 50px;
+        }
+        .testimonials .section-label { color: var(--gold); }
+        .testimonials .section-title { color: var(--white); }
+        .testimonials .section-subtitle { color: rgba(255,255,255,0.7); }
+        .testimonials-grid {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+        .testimonial-card {
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(201,168,76,0.15);
+            border-radius: 16px;
+            padding: 35px 30px;
+            position: relative;
+            transition: all 0.4s ease;
+        }
+        .testimonial-card:hover {
+            background: rgba(255,255,255,0.12);
+            transform: translateY(-5px);
+        }
+        .testimonial-stars {
+            color: var(--gold);
+            font-size: 1.1rem;
+            margin-bottom: 18px;
+            letter-spacing: 2px;
+        }
+        .testimonial-card p {
+            color: rgba(255,255,255,0.85);
+            font-size: 0.92rem;
+            line-height: 1.7;
+            font-weight: 300;
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .testimonial-author-avatar {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--purple) 0%, var(--gold) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Playfair Display', serif;
+            font-size: 1rem;
+            color: var(--white);
+            flex-shrink: 0;
+        }
+        .testimonial-author-name {
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: var(--white);
+        }
+        .testimonial-author-loc {
+            font-size: 0.8rem;
+            color: var(--gold);
+            font-weight: 300;
+        }
+
+        @media (max-width: 1024px) {
+            .testimonials-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 768px) {
+            .testimonials-grid { grid-template-columns: 1fr; }
+            .testimonials { padding: 70px 25px; }
+            .testimonials { padding: 70px 25px; }
+        }
+
+        /* ===== MAP ===== */
+        .map-section {
+            padding: 0;
+            background: var(--cream);
+        }
+        .map-container {
+            position: relative;
+            width: 100%;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 30px;
+        }
+        .map-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .map-header .section-label {
+            font-size: 0.8rem;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--purple);
+            font-weight: 500;
+            margin-bottom: 10px;
+        }
+        .map-header h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.6rem;
+            color: var(--text);
+            margin-bottom: 5px;
+        }
+        .map-header p {
+            color: var(--text-light);
+            font-weight: 300;
+            font-size: 0.95rem;
+        }
+        .map-embed {
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(61,43,79,0.1);
+            border: 1px solid rgba(139,94,131,0.1);
+        }
+        .intro-section {
+            background: var(--cream);
+            padding: 80px 50px;
+            text-align: center;
+        }
+        .intro-container {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        .intro-section h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1.6rem, 4vw, 2.2rem);
+            color: var(--text);
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+        .intro-section p {
+            color: var(--text-light);
+            font-size: 1.05rem;
+            line-height: 1.8;
+            font-weight: 300;
+            margin-bottom: 15px;
+        }
+        .intro-divider {
+            width: 60px;
+            height: 2px;
+            background: linear-gradient(90deg, var(--purple), var(--gold));
+            margin: 0 auto 25px;
+            border-radius: 1px;
+        }
+        .intro-thanks {
+            font-family: 'Great Vibes', cursive;
+            font-size: 4.5rem;
+            color: var(--purple);
+            margin-top: 20px;
+        }
+
+        .map-embed iframe {
+            width: 100%;
+            height: 350px;
+            border: none;
+            display: block;
+            filter: saturate(0.8);
+        }
+
+        @media (max-width: 1024px) {
+            .why-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 768px) {
+            nav { padding: 15px 25px; }
+            nav.scrolled { padding: 12px 25px; }
+            section { padding: 70px 25px; }
+            .about-container { grid-template-columns: 1fr; gap: 40px; }
+            .about-image::before { display: none; }
+            .gallery-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+            .gallery-hero { max-width: 350px; }
+            .gallery-item { aspect-ratio: 1/1; }
+            .why-grid { grid-template-columns: 1fr 1fr; gap: 20px; }
+            .contact-container { grid-template-columns: 1fr; }
+            .specialties-grid { grid-template-columns: 1fr 1fr; }
+            .hero-badges { gap: 10px; }
+            .hero-badge { padding: 8px 16px; font-size: 0.7rem; }
+        }
+        @media (max-width: 480px) {
+            .hero-title { font-size: 3rem; }
+            .specialties-grid { grid-template-columns: 1fr; }
+            .why-grid { grid-template-columns: 1fr; }
+            .footer-links { gap: 15px; }
+            .gallery-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+            .gallery-hero { max-width: 100%; margin: 0 0 10px; aspect-ratio: 1/1; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav id="navbar">
+        <a href="#" class="nav-logo">
+            <img src="images/logo.png" alt="Rose - We Bake Love">
+            <div class="nav-logo-text">Rose<span>We Bake Love</span></div>
+        </a>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#specialties">Specialties</a></li>
+            <li><a href="#gallery">Gallery</a></li>
+            <li><a href="#contact">Order</a></li>
+        </ul>
+        <div class="hamburger" id="hamburger" onclick="document.getElementById('sideMenu').classList.toggle('open');this.classList.toggle('active');">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <div class="side-menu" id="sideMenu">
+            <a href="#home" onclick="closeMenu()">Home</a>
+            <a href="#specialties" onclick="closeMenu()">Specialties</a>
+            <a href="#gallery" onclick="closeMenu()">Gallery</a>
+            <a href="#testimonials" onclick="closeMenu()">Reviews</a>
+            <a href="#why" onclick="closeMenu()">Why Choose Us</a>
+            <a href="#contact" onclick="closeMenu()">Order Now</a>
+            <a href="tel:+447828586533" class="menu-cta" onclick="closeMenu()">Call to Order</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <div class="hero-carousel-strip" style="margin-bottom:20px;">
+                <div class="hero-carousel-track">
+                    <img src="images/cake-02.jpg" alt="" style="object-position:center 45%">
+                    <img src="images/cake-03.jpg" alt="">
+                    <img src="images/cake-06.jpg" alt="" style="object-position:center 75%">
+                    <img src="images/cake-07.jpg" alt="" style="object-position:center 75%">
+                    <img src="images/cake-09.jpg" alt="" style="object-position:center 75%">
+                    <img src="images/cake-10.jpg" alt="">
+                    <img src="images/cake-11.jpg" alt="">
+                    <img src="images/cake-02.jpg" alt="" style="object-position:center 45%">
+                    <img src="images/cake-03.jpg" alt="">
+                    <img src="images/cake-06.jpg" alt="" style="object-position:center 75%">
+                    <img src="images/cake-07.jpg" alt="" style="object-position:center 75%">
+                    <img src="images/cake-09.jpg" alt="" style="object-position:center 75%">
+                    <img src="images/cake-10.jpg" alt="">
+                    <img src="images/cake-11.jpg" alt="">
+                </div>
+            </div>
+            <img src="images/logo.png" alt="Rose - We Bake Love" class="hero-logo">
+            <div class="hero-divider">
+                <span class="line"></span>
+                <svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+                <span class="line"></span>
+            </div>
+            <p class="hero-desc">Handcrafted custom cakes and traditional Iraqi desserts, baked fresh with love in the heart of Leeds. Every creation tells a story.</p>
+            <div class="hero-badges">
+                <div class="hero-badge">
+                    <svg viewBox="0 0 24 24" style="fill:var(--gold);width:18px;height:18px"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    5-Star Hygiene Rating
+                </div>
+                <div class="hero-badge">
+                    <svg viewBox="0 0 24 24" style="fill:var(--gold);width:18px;height:18px"><path d="M20 8h-3V4H3c-1.1 0-2 .9-2 2v11h2c0 1.66 1.34 3 3 3s3-1.34 3-3h6c0 1.66 1.34 3 3 3s3-1.34 3-3h2v-5l-3-4zM6 18.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm13.5-9l1.96 2.5H17V9.5h2.5zm-1.5 9c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/></svg>
+                    Delivery Available
+                </div>
+            </div>
+            <a href="tel:+447828586533" class="hero-cta">
+                <svg viewBox="0 0 24 24" style="fill:currentColor;width:18px;height:18px"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+                Order Now — 07828 586533
+            </a>
+        </div>
+        <div class="scroll-indicator">
+            <span>Scroll</span>
+            <svg viewBox="0 0 24 24" style="fill:var(--gold);width:22px;height:22px"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg>
+        </div>
+    </section>
+
+    <!-- Intro Section -->
+    <section class="intro-section fade-in" id="intro">
+        <div class="intro-container">
+            <h2>From Our Kitchen to Your Celebration</h2>
+            <div class="intro-divider"></div>
+            <p>Every cake and dessert we create is made with love, using recipes passed down through generations. Whether you're celebrating a birthday, a special milestone, or just want to treat yourself to authentic Iraqi desserts, we're here to make your moments sweeter.</p>
+            <p class="intro-thanks" style="font-size:3.2rem">Thank you for choosing our bakery.</p>
+        </div>
+    </section>
+
+    <!-- Specialties Section -->
+    <section class="specialties fade-in" id="specialties">
+        <div class="section-header">
+            <p class="section-label">What We Do</p>
+            <h2 class="section-title">Our Specialties</h2>
+            <div class="section-divider"></div>
+        </div>
+        <div class="specialties-grid">
+            <div class="specialty-card fade-in fade-in-delay-1">
+                <div class="specialty-icon">
+                    <svg viewBox="0 0 24 24"><rect x="4" y="10" width="16" height="9" rx="2"/><rect x="11.5" y="3" width="1" height="8" rx="0.3"/><path d="M12 1c-.5 1-1.8 2.8-1.8 4 0 1 .8 1.8 1.8 1.8s1.8-.8 1.8-1.8C13.8 3.8 12.5 2 12 1z"/></svg>
+                </div>
+                <h3>Custom Celebration Cakes</h3>
+                <p>Bespoke cakes tailored to your event — birthdays, anniversaries, engagements & more.</p>
+            </div>
+            <div class="specialty-card fade-in fade-in-delay-2">
+                <div class="specialty-icon">
+                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                </div>
+                <h3>Traditional Iraqi & Arabic Desserts</h3>
+                <p>Authentic baklava, maamoul & more — recipes from the heart of Iraq.</p>
+            </div>
+            <div class="specialty-card fade-in fade-in-delay-4">
+                <div class="specialty-icon">
+                    <svg viewBox="0 0 24 24"><path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM9 10H7v2h2v-2zm4 0h-2v2h2v-2zm4 0h-2v2h2v-2zm-8 4H7v2h2v-2zm4 0h-2v2h2v-2zm4 0h-2v2h2v-2z"/></svg>
+                </div>
+                <h3>Event Catering</h3>
+                <p>Full table setups with Iraqi sweets, fruit platters, cake cups & decorations for your celebration.</p>
+            </div>
+            <div class="specialty-card fade-in fade-in-delay-1">
+                <div class="specialty-icon">
+                    <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                </div>
+                <h3>Dietary Requirements</h3>
+                <p>Gluten-free, dairy-free, vegan & more available upon request. Just ask!</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="gallery fade-in" id="gallery">
+        <div class="section-header">
+            <p class="section-label">Our Work</p>
+            <h2 class="section-title">Cake Gallery</h2>
+            <div class="section-divider"></div>
+            <p class="section-subtitle">A selection of handcrafted cakes made with love for our wonderful customers.</p>
+        </div>
+        <div class="gallery-hero fade-in fade-in-delay-1">
+            <img src="images/cake-05.jpg" alt="Wedding anniversary cake">
+            <div class="gallery-overlay">
+                <h4>Wedding Cake</h4>
+            </div>
+        </div>
+        <div class="gallery-grid">
+            <div class="gallery-item fade-in fade-in-delay-1">
+                <img src="images/cake-02.jpg" alt="Bluey themed kids birthday cake" style="object-position: center 45%">
+                <div class="gallery-overlay">
+                    <h4>Children's Birthday Cake</h4>
+                </div>
+            </div>
+            <div class="gallery-item fade-in fade-in-delay-3">
+                <img src="images/cake-03.jpg" alt="Lotus Biscoff drip cake">
+                <div class="gallery-overlay">
+                    <h4>Lotus Biscoff Drip Cake</h4>
+                </div>
+            </div>
+            <div class="gallery-item fade-in fade-in-delay-1">
+                <img src="images/cake-10.jpg" alt="Pink and gold drip cake">
+                <div class="gallery-overlay">
+                    <h4>Pink Drip Cake</h4>
+                </div>
+            </div>
+            <div class="gallery-item fade-in fade-in-delay-2">
+                <img src="images/cake-04.jpg" alt="Dinosaur themed birthday cake">
+                <div class="gallery-overlay">
+                    <h4>Dinosaur Birthday Cake</h4>
+                </div>
+            </div>
+            <div class="gallery-item fade-in fade-in-delay-3">
+                <img src="images/cake-07.jpg" alt="Fresh fruit chocolate cake" style="object-position: center 75%">
+                <div class="gallery-overlay">
+                    <h4>Fresh Fruit Cake</h4>
+                </div>
+            </div>
+            <div class="gallery-item fade-in fade-in-delay-1">
+                <img src="images/cake-08.jpg" alt="Engagement cake with roses" style="object-position: center 75%">
+                <div class="gallery-overlay">
+                    <h4>Engagement Cake</h4>
+                </div>
+            </div>
+            <div class="gallery-item fade-in fade-in-delay-2">
+                <img src="images/cake-11.jpg" alt="Classic strawberry cream cake">
+                <div class="gallery-overlay">
+                    <h4>Classic Strawberry Cake</h4>
+                </div>
+            </div>
+            <div class="gallery-item fade-in fade-in-delay-3">
+                <img src="images/cake-06.jpg" alt="Jungle themed birthday cake" style="object-position: center 70%">
+                <div class="gallery-overlay">
+                    <h4>Jungle Themed Cake</h4>
+                </div>
+            </div>
+            <div class="gallery-item fade-in fade-in-delay-1">
+                <img src="images/cake-01.jpg" alt="Football themed birthday cake" style="object-position: center 45%">
+                <div class="gallery-overlay">
+                    <h4>Football Birthday Cake</h4>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us Section -->
+    <section class="why fade-in" id="why">
+        <div class="section-header">
+            <p class="section-label">Why Rose</p>
+            <h2 class="section-title">Why Choose Us</h2>
+            <div class="section-divider" style="background: linear-gradient(90deg, var(--gold), var(--purple-light))"></div>
+            <p class="section-subtitle">Baked with love, delivered with care.</p>
+        </div>
+        <div class="why-grid">
+            <div class="why-item fade-in fade-in-delay-1">
+                <div class="why-icon">
+                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                </div>
+                <h4>5-Star Hygiene</h4>
+                <p>Rated 5 stars for food hygiene & safety standards.</p>
+            </div>
+            <div class="why-item fade-in fade-in-delay-2">
+                <div class="why-icon">
+                    <svg viewBox="0 0 24 24"><path d="M20 8h-3V4H3c-1.1 0-2 .9-2 2v11h2c0 1.66 1.34 3 3 3s3-1.34 3-3h6c0 1.66 1.34 3 3 3s3-1.34 3-3h2v-5l-3-4zM6 18.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm13.5-9l1.96 2.5H17V9.5h2.5zm-1.5 9c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/></svg>
+                </div>
+                <h4>Delivery Available</h4>
+                <p>We deliver across Leeds. Your cakes arrive fresh.</p>
+            </div>
+            <div class="why-item fade-in fade-in-delay-3">
+                <div class="why-icon">
+                    <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                </div>
+                <h4>Fresh Daily</h4>
+                <p>Everything is baked fresh to order every single day.</p>
+            </div>
+            <div class="why-item fade-in fade-in-delay-4">
+                <div class="why-icon">
+                    <svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+                </div>
+                <h4>Made With Love</h4>
+                <p>Every creation is handcrafted with care & attention.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials fade-in" id="testimonials">
+        <div class="section-header">
+            <h2 class="section-title" style="font-size:clamp(1.6rem,4.5vw,2.8rem)">Loved by everyone, but don't just take our word for it!</h2>
+            <div class="section-divider" style="background: linear-gradient(90deg, var(--gold), var(--purple-light))"></div>
+        </div>
+        <div class="testimonials-grid">
+            <div class="testimonial-card fade-in fade-in-delay-1">
+                <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                <p>"I don't know how to thank you enough, Elias's birthday cake was wonderful... the taste was amazing and the quantity was enough for all his classmates and teachers. Many mothers have taken your contact information to get in touch with you."</p>
+                <div class="testimonial-author">
+                    <div class="testimonial-author-avatar">B</div>
+                    <div>
+                        <div class="testimonial-author-name">Batool</div>
+                        <div class="testimonial-author-loc">Leeds</div>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-card fade-in fade-in-delay-2">
+                <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                <p>"We really enjoyed all the pastries. They looked amazing, very clean and appealing. Each layer of cake was uniform and just the right amount of cream between each layer. My favourite was the oreo and lotus biscoff... it was so creamy and delicious."</p>
+                <div class="testimonial-author">
+                    <div class="testimonial-author-avatar">R</div>
+                    <div>
+                        <div class="testimonial-author-name">Rehana</div>
+                        <div class="testimonial-author-loc">Shipley</div>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-card fade-in fade-in-delay-3">
+                <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                <p>"The cake was moist and soft and felt light. Overall the cakes were really well made &mdash; kudos to the pastry chef!! Loved every bite."</p>
+                <div class="testimonial-author">
+                    <div class="testimonial-author-avatar">H</div>
+                    <div>
+                        <div class="testimonial-author-name">Humera</div>
+                        <div class="testimonial-author-loc">Leeds</div>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-card fade-in fade-in-delay-1">
+                <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                <p>"Best cake in the world. Everything was perfect!"</p>
+                <div class="testimonial-author">
+                    <div class="testimonial-author-avatar">N</div>
+                    <div>
+                        <div class="testimonial-author-name">Nirouz</div>
+                        <div class="testimonial-author-loc">Leeds</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact / Order Section -->
+    <section class="contact fade-in" id="contact">
+        <div class="section-header">
+            <p class="section-label">Get In Touch</p>
+            <h2 class="section-title">Order Your Cake</h2>
+            <div class="section-divider"></div>
+            <p class="section-subtitle">Ready to make your celebration sweeter? Contact us today.</p>
+        </div>
+        <div class="contact-container">
+            <div class="contact-info">
+                <h3>Rose</h3>
+                <p class="tagline">We Bake Love</p>
+                <div class="contact-detail">
+                    <svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+                    <div>
+                        <strong>Phone</strong>
+                        <a href="tel:+447828586533">+44 7828 586533</a>
+                    </div>
+                </div>
+                <div class="contact-detail">
+                    <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                    <div>
+                        <strong>Location</strong>
+                        <span>17 Iveson Approach, Leeds, LS16 6LJ<br><em>(Inside Taza Shawarma)</em></span>
+                    </div>
+                </div>
+                <div class="contact-detail">
+                    <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                    <div>
+                        <strong>Instagram</strong>
+                        <a href="https://instagram.com/rose.webakelove" target="_blank">@rose.webakelove</a>
+                    </div>
+                </div>
+                <div class="contact-detail">
+                    <svg viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg>
+                    <div>
+                        <strong>Opening Hours</strong>
+                        <span>Mon–Sat: 11am – 9pm<br>Sun: 12pm – 9pm</span>
+                    </div>
+                </div>
+                <div class="contact-social">
+                    <a href="https://instagram.com/rose.webakelove" target="_blank" aria-label="Instagram">
+                        <svg viewBox="0 0 24 24"><path d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2m-.2 2A3.6 3.6 0 0 0 4 7.6v8.8C4 18.39 5.61 20 7.6 20h8.8a3.6 3.6 0 0 0 3.6-3.6V7.6C20 5.61 18.39 4 16.4 4H7.6m9.65 1.5a1.25 1.25 0 0 1 1.25 1.25A1.25 1.25 0 0 1 17.25 8 1.25 1.25 0 0 1 16 6.75a1.25 1.25 0 0 1 1.25-1.25M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3z"/></svg>
+                    </a>
+                    <a href="tel:+447828586533" aria-label="Phone">
+                        <svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+                    </a>
+                </div>
+            </div>
+            <div class="contact-cta">
+                <img src="images/logo.png" alt="Rose Logo">
+                <h3>Order Today!</h3>
+                <p>Every cake is made to order with love. Get in touch to discuss your custom design — we'd love to create something special for you.</p>
+                <a href="tel:+447828586533" class="order-btn">
+                    <svg viewBox="0 0 24 24" style="fill:currentColor;width:16px;height:16px"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+                    Call Now — 07828 586533
+                </a>
+                <div class="hygiene-badge">
+                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    5-Star Food Hygiene Rated
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Map Section -->
+    <section class="map-section" id="map">
+        <div class="map-container">
+            <div class="map-header fade-in">
+                <p class="section-label">Find Us</p>
+                <h3>Come Visit Rose</h3>
+                <p>17 Iveson Approach, Leeds LS16 6LJ <em>(Inside Taza Shawarma)</em></p>
+            </div>
+            <div class="map-embed fade-in">
+                <iframe src="https://maps.google.com/maps?q=17%20Iveson%20Approach%20Leeds%20LS16%206LJ&amp;t=m&amp;z=15&amp;output=embed&amp;iwloc=near" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-logo">Rose</div>
+        <div class="footer-tagline">We Bake Love</div>
+        <div class="footer-divider"></div>
+        <ul class="footer-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#specialties">Specialties</a></li>
+            <li><a href="#gallery">Gallery</a></li>
+            <li><a href="#contact">Order</a></li>
+        </ul>
+        <p class="footer-credit">
+            Rose - We Bake Love &copy; 2025 | 17 Iveson Approach, Leeds LS16 6LJ
+        </p>
+    </footer>
+
+    <script>
+        // Navbar scroll effect
+        function handleScroll() {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        }
+
+        // Close side menu
+        function closeMenu() {
+            document.getElementById('sideMenu').classList.remove('open');
+            document.getElementById('hamburger').classList.remove('active');
+        }
+
+        // Fade in on scroll
+        function handleFadeIn() {
+            const elements = document.querySelectorAll('.fade-in');
+            elements.forEach(el => {
+                const rect = el.getBoundingClientRect();
+                if (rect.top < window.innerHeight - 80) {
+                    el.classList.add('visible');
+                }
+            });
+        }
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                const href = this.getAttribute('href');
+                if (href !== '#') {
+                    e.preventDefault();
+                    const target = document.querySelector(href);
+                    if (target) {
+                        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+                }
+            });
+        });
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            handleFadeIn();
+        });
+
+        window.addEventListener('scroll', () => {
+            handleScroll();
+            handleFadeIn();
+        });
+    </script>
+</body>
+</html>
